@@ -1,32 +1,1684 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>file.d documentation</title>
-  <link rel="icon" type="image/png" href="/file.d/static/file.d.png" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="A blazing fast tool for building data pipelines: read, process, and output events.">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lig Fatihi - Elbistanspor Yükselişi</title>
+    <style>
+        /* Genel Stil */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0e7ee; /* Hafif mavi-gri arka plan */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .game-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1300px;
+            display: flex;
+            min-height: 850px;
+            margin: 30px;
+            overflow: hidden;
+        }
+
+        /* Sol Kenar Çubuğu (Sidebar) */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50; /* Koyu lacivert */
+            color: #ecf0f1;
+            padding: 25px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .sidebar h2 {
+            color: #f1c40f; /* Altın sarısı */
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 15px 25px;
+            display: block;
+            border-radius: 0 50px 50px 0; /* Sağdan yuvarlak hat */
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #34495e; /* Daha koyu lacivert */
+            padding-left: 35px;
+            box-shadow: inset 5px 0 0 #f1c40f; /* Aktif/hover'da sarı çizgi */
+        }
+
+        /* Ana İçerik Alanı */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* İçerik taşarsa kaydırma */
+        }
+
+        /* Üst Bilgi Çubuğu */
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #ddd;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .header-info div {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-info div:first-child {
+            text-align: left;
+            color: #2c3e50; /* Kulüp adı için koyu lacivert */
+        }
+
+        .header-info div:last-child {
+            text-align: right;
+            color: #27ae60; /* Bütçe için yeşil */
+        }
+
+        /* Sayfa İçerik Alanları */
+        .content-area {
+            flex-grow: 1;
+            background-color: #fdfdfd;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+            max-height: calc(100% - 70px); /* Üst bilginin yüksekliğini düşerek */
+            overflow-y: auto;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f1c40f; /* Sarı çizgi */
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        /* Tablo Stilleri */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        table th, table td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #eaf1f6; /* Hafif mavi-gri başlık */
+            font-weight: bold;
+            color: #444;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f8fbfd; /* Çift sıralar için hafif fark */
+        }
+
+        table tbody tr:hover {
+            background-color: #e6f2ff; /* Satır üzerine gelince vurgu */
+            cursor: pointer;
+        }
+
+        /* Buton Stilleri */
+        .button {
+            background-color: #27ae60; /* Yeşil */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.05em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background-color: #229a54; /* Daha koyu yeşil */
+            transform: translateY(-2px);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        /* Form Elemanları */
+        select, input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-top: 5px;
+            box-sizing: border-box; /* Padding ve border genişliğe dahil */
+        }
+        input[type="number"] {
+            width: 80px; /* Küçük kutu için */
+        }
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Küçük ekranlarda alta geçsin */
+            align-items: center;
+        }
+        .filter-group label {
+            margin-bottom: 0;
+            white-space: nowrap; /* Metin tek satırda kalsın */
+        }
+
+        /* Maç Logu */
+        .match-log {
+            border: 1px solid #a3c1e0; /* Mavi çerçeve */
+            background-color: #eaf1f6; /* Açık mavi arka plan */
+            padding: 20px;
+            height: 350px;
+            overflow-y: scroll;
+            margin-top: 25px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: #444;
+            font-size: 0.95em;
+        }
+
+        .match-log p {
+            margin: 8px 0;
+            padding-left: 10px;
+            border-left: 3px solid #27ae60; /* Her satırın solunda yeşil çizgi */
+        }
+        .match-log p.my-team-match {
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #d8eafa; /* Kendi maçını vurgula */
+            border-left-color: #f1c40f; /* Sarı çizgi */
+        }
+
+        /* Genel Mesaj Kutusu */
+        .message-box {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Yeni Eklenen Stiller: İlk 11 Sahası */
+        .tactic-board {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); /* Sahayı bölmek için 10 sütun */
+            grid-template-rows: repeat(10, 1fr); /* Sahayı bölmek için 10 satır */
+            gap: 5px;
+            width: 100%;
+            height: 500px; /* Saha yüksekliği */
+            background-color: #4CAF50; /* Yeşil saha rengi */
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden; /* Taşmaları engelle */
+            padding: 10px;
+            box-sizing: border-box;
+            border: 5px solid #fff;
+            margin-top: 20px;
+        }
+
+        .player-slot {
+            background-color: rgba(255, 255, 255, 0.2); /* Yarı şeffaf beyaz */
+            border: 1px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            cursor: pointer;
+            position: absolute; /* Dinamik konumlandırma için */
+            width: 80px; /* Oyuncu kutusu genişliği */
+            height: 60px; /* Oyuncu kutusu yüksekliği */
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .player-slot.occupied {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #f1c40f;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .player-slot.occupied .player-name {
+            font-size: 0.9em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 95%; /* Taşan isimler için */
+        }
+        .player-slot.occupied .player-ovr {
+             font-size: 0.7em;
+             opacity: 0.8;
+        }
+
+        .player-slot:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Player selection dropdown */
+        .player-select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: none;
+            background-color: transparent;
+            color: inherit;
+            font-size: inherit;
+            cursor: pointer;
+            text-align: center;
+            -webkit-appearance: none; /* Remove default arrow on Chrome */
+            -moz-appearance: none; /* Remove default arrow on Firefox */
+            appearance: none; /* Remove default arrow */
+        }
+        .player-select option {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        .player-select-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Oyuncu adı ve OVR alt alta */
+        }
+
+        /* Transfer Sekmeleri */
+        .transfer-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            overflow-x: auto; /* Sekmeler sığmazsa kaydır */
+        }
+        .transfer-tabs button {
+            background-color: #eee;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin-right: 5px;
+            transition: background-color 0.2s ease;
+            white-space: nowrap; /* Buton metni tek satırda kalsın */
+        }
+        .transfer-tabs button.active-tab {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        .transfer-tabs button:hover:not(.active-tab) {
+            background-color: #e0e0e0;
+        }
+        .transfer-tab-content {
+            display: none; /* Varsayılan olarak gizli */
+        }
+        .transfer-tab-content.active-tab-content {
+            display: block; /* Aktif olanı göster */
+        }
+    </style>
 </head>
 <body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: 'file.d',
-      repo: 'https://github.com/ozontech/file.d',
-      loadSidebar: true,
-      loadNavbar: true,
-      subMaxLevel: 2,
-      maxLevel: 1,
-      coverpage: true,
-      auto2top: true,
-      markdown: {
-        gfm: true
-      }
-    }
-  </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify-copy-code"></script>
+    <div class="game-container">
+        <div class="sidebar">
+            <h2>LİG FATİHİ</h2>
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home">Ana Sayfa</a></li>
+                <li><a href="#" class="nav-link" data-page="team">Takımım</a></li>
+                <li><a href="#" class="nav-link" data-page="transfers">Transferler</a></li>
+                <li><a href="#" class="nav-link" data-page="schedule">Maç Takvimi</a></li>
+                <li><a href="#" class="nav-link" data-page="finances">Finans</a></li>
+                <li><a href="#" class="nav-link" data-page="league">Lig Tablosu</a></li>
+                <li><a href="#" class="nav-link" data-page="next-match">Sonraki Maçı Oyna</a></li>
+                <li><a href="#" class="nav-link" id="saveGameButton">Oyunu Kaydet</a></li>
+                <li><a href="#" class="nav-link" id="loadGameButton">Oyunu Yükle</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="header-info">
+                <div id="clubNameDisplay">**Kulüp:** Elbistanspor</div>
+                <div id="seasonDisplay">**Mevsim:** 2025-2026 - Hafta: 1</div>
+                <div id="budgetDisplay">**Bütçe:** 200.000.000 €</div>
+            </div>
+
+            <div class="content-area" id="gameContent">
+                <div id="home" class="page-content active-page">
+                    <h3 class="section-title">Hoş Geldin, Teknik Direktör!</h3>
+                    <p>Elbistanspor'un başına geçtin. Hedefin belli: **Süper Lig'i fethetmek!** Sana verilen cömert bütçe ve taktiksel dehanla Elbistanspor'u zirveye taşı!</p>
+                    <p>Hemen sol menüden takımını düzenleyebilir, transfer pazarında yıldızları keşfedebilir veya bir sonraki maça hazırlanabilirsin. Bol şans!</p>
+                    <div class="message-box" id="generalMessage"></div>
+                </div>
+
+                <div id="team" class="page-content" style="display:none;">
+                    <h3 class="section-title">Takım Kadrosu</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Adı Soyadı</th>
+                                <th>Mevki</th>
+                                <th>Yaş</th>
+                                <th>Genel Yetenek</th>
+                                <th>Maaş</th>
+                                <th>Piyasa Değeri</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teamRoster">
+                            </tbody>
+                    </table>
+
+                    <h4 class="section-title" style="margin-top: 30px;">Taktikler ve İlk 11</h4>
+                    <div>
+                        <label for="formation">Diziliş:</label>
+                        <select id="formation">
+                            <option value="442">4-4-2</option>
+                            <option value="433">4-3-3</option>
+                            <option value="352">3-5-2</option>
+                            <option value="4231">4-2-3-1</option>
+                            <option value="532">5-3-2</option>
+                        </select>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <label for="playStyle">Oyun Tarzı:</label>
+                        <select id="playStyle">
+                            <option value="balanced">Dengeli</option>
+                            <option value="attacking">Hücum Odaklı</option>
+                            <option value="defensive">Savunma Odaklı</option>
+                        </select>
+                    </div>
+                     <div style="margin-top: 15px;">
+                        <label for="pressIntensity">Pres Yoğunluğu:</label>
+                        <select id="pressIntensity">
+                            <option value="low">Düşük</option>
+                            <option value="medium">Orta</option>
+                            <option value="high">Yüksek</option>
+                        </select>
+                    </div>
+                    
+                    <div class="tactic-board" id="tacticBoard">
+                        </div>
+                    <button class="button" id="saveTacticsButton" style="margin-top: 20px;">Taktikleri ve İlk 11'i Kaydet</button>
+                    <button class="button" id="clearSquadButton" style="margin-top: 20px; background-color: #e74c3c;">Sahayı Temizle</button>
+                </div>
+
+                <div id="transfers" class="page-content" style="display:none;">
+                    <h3 class="section-title">Transfer Pazarı</h3>
+
+                    <div class="transfer-tabs">
+                        <button class="transfer-tab-button active-tab" data-tab="all">Tüm Oyuncular</button>
+                        <button class="transfer-tab-button" data-tab="goalkeepers">Kaleciler</button>
+                        <button class="transfer-tab-button" data-tab="defenders">Defans</button>
+                        <button class="transfer-tab-button" data-tab="midfielders">Orta Saha</button>
+                        <button class="transfer-tab-button" data-tab="forwards">Forvet</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="minOVRFilter">Min OVR:</label>
+                        <input type="number" id="minOVRFilter" value="60" min="1" max="99">
+                        <label for="maxOVRFilter">Max OVR:</label>
+                        <input type="number" id="maxOVRFilter" value="99" min="1" max="99">
+                        <label for="minAgeFilter">Min Yaş:</label>
+                        <input type="number" id="minAgeFilter" value="16" min="15" max="45">
+                        <label for="maxAgeFilter">Max Yaş:</label>
+                        <input type="number" id="maxAgeFilter" value="40" min="15" max="45">
+                        <button class="button" id="applyFiltersButton" style="margin-top: 0;">Filtrele</button>
+                    </div>
+                    
+                    <div id="allTabContent" class="transfer-tab-content active-tab-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Adı Soyadı</th>
+                                    <th>Mevki</th>
+                                    <th>Yaş</th>
+                                    <th>Genel Yetenek</th>
+                                    <th>Piyasa Değeri</th>
+                                    <th>Maaş (Tahmini)</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transferMarketPlayers">
+                                </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="goalkeepersTabContent" class="transfer-tab-content">
+                         <table>
+                            <thead><tr><th>Adı Soyadı</th><th>Mevki</th><th>Yaş</th><th>Genel Yetenek</th><th>Piyasa Değeri</th><th>Maaş (Tahmini)</th><th>İşlem</th></tr></thead>
+                            <tbody id="transferMarketGoalkeepers"></tbody>
+                        </table>
+                    </div>
+                    <div id="defendersTabContent" class="transfer-tab-content">
+                         <table>
+                            <thead><tr><th>Adı Soyadı</th><th>Mevki</th><th>Yaş</th><th>Genel Yetenek</th><th>Piyasa Değeri</th><th>Maaş (Tahmini)</th><th>İşlem</th></tr></thead>
+                            <tbody id="transferMarketDefenders"></tbody>
+                        </table>
+                    </div>
+                    <div id="midfieldersTabContent" class="transfer-tab-content">
+                         <table>
+                            <thead><tr><th>Adı Soyadı</th><th>Mevki</th><th>Yaş</th><th>Genel Yetenek</th><th>Piyasa Değeri</th><th>Maaş (Tahmini)</th><th>İşlem</th></tr></thead>
+                            <tbody id="transferMarketMidfielders"></tbody>
+                        </table>
+                    </div>
+                    <div id="forwardsTabContent" class="transfer-tab-content">
+                         <table>
+                            <thead><tr><th>Adı Soyadı</th><th>Mevki</th><th>Yaş</th><th>Genel Yetenek</th><th>Piyasa Değeri</th><th>Maaş (Tahmini)</th><th>İşlem</th></tr></thead>
+                            <tbody id="transferMarketForwards"></tbody>
+                        </table>
+                    </div>
+
+
+                    <p style="margin-top: 30px;">Oyuncu Sat:</p>
+                     <table>
+                        <thead>
+                            <tr>
+                                <th>Adı Soyadı</th>
+                                <th>Mevki</th>
+                                <th>Yaş</th>
+                                <th>Genel Yetenek</th>
+                                <th>Piyasa Değeri</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sellPlayers">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div id="schedule" class="page-content" style="display:none;">
+                    <h3 class="section-title">Maç Takvimi</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hafta</th>
+                                <th>Ev Sahibi</th>
+                                <th>Deplasman</th>
+                                <th>Skor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matchScheduleList">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div id="finances" class="page-content" style="display:none;">
+                    <h3 class="section-title">Finans Durumu</h3>
+                    <p>**Mevcut Bütçe:** <span id="currentBudgetFinances">0 €</span></p>
+                    <p>**Toplam Gelirler (Bu Sezon):** <span id="totalIncome">0 €</span></p>
+                    <p>**Toplam Giderler (Bu Sezon):** <span id="totalExpenses">0 €</span></p>
+
+                    <h4 style="margin-top: 25px;">Aylık Detaylar:</h4>
+                    <ul>
+                        <li>Bilet Satışları: <span id="ticketSales">0 €</span></li>
+                        <li>Yayın Gelirleri: <span id="broadcastRevenue">0 €</span></li>
+                        <li>Sponsorluklar: <span id="sponsorships">0 €</span></li>
+                        <li>Oyuncu Satış Gelirleri: <span id="playerSalesRevenue">0 €</span></li>
+                    </ul>
+                    <h4 style="margin-top: 15px;">Giderler:</h4>
+                    <ul>
+                        <li>Oyuncu Maaşları: <span id="playerSalaries">0 €</span></li>
+                        <li>Personel Maaşları: <span id="staffSalaries">0 €</span></li>
+                        <li>Tesis Giderleri: <span id="facilityCosts">0 €</span></li>
+                        <li>Oyuncu Satın Alma Giderleri: <span id="playerPurchaseCosts">0 €</span></li>
+                    </ul>
+                    <p style="font-weight: bold; margin-top: 15px;">Bu Ay Net: <span id="monthlyNet">0 €</span></p>
+                </div>
+
+                <div id="league" class="page-content" style="display:none;">
+                    <h3 class="section-title">Süper Lig Tablosu</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Takım</th>
+                                <th>O</th>
+                                <th>G</th>
+                                <th>B</th>
+                                <th>M</th>
+                                <th>AG</th>
+                                <th>YG</th>
+                                <th>Av.</th>
+                                <th>Puan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leagueTableBody">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div id="next-match" class="page-content" style="display:none;">
+                    <h3 class="section-title" id="nextMatchTitle">Sonraki Hafta: Hazırlanıyor...</h3>
+                    <p id="nextMatchDetails">Hafta maçları yükleniyor...</p>
+                    <button class="button" id="simulateMatchButton">Haftayı Oyna</button>
+                    <div class="match-log" id="matchLog">
+                        <p>Haftayı oynamak için butona tıklayın...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Oyun Verileri (JavaScript) ---
+        const GAME_SAVE_KEY = "ligFatihiSave";
+
+        let gameState = {
+            currentWeek: 0, // 0'dan başlar
+            currentSeason: "2025-2026",
+            budget: 200000000, // 200 Milyon Euro
+            clubName: "Elbistanspor",
+            tactics: {
+                formation: "442",
+                playStyle: "balanced",
+                pressIntensity: "medium",
+                startingXI: Array(11).fill(null) // İlk 11 oyuncu ID'leri
+            },
+            finances: {
+                totalIncome: 0,
+                totalExpenses: 0,
+                // Bu ayki finanslar her ay başında sıfırlanıp yeniden hesaplanmalı
+                monthlyIncome: {
+                    ticketSales: 0,
+                    broadcastRevenue: 0,
+                    sponsorships: 0,
+                    playerSales: 0 // Oyuncu satış gelirleri (bu ayki)
+                },
+                monthlyExpenses: {
+                    playerSalaries: 0, // Bu ayki oyuncu maaşları
+                    staffSalaries: 200000, // Aylık personel maaşları sabit
+                    facilityCosts: 100000, // Aylık tesis giderleri sabit
+                    playerPurchases: 0 // Oyuncu satın alma giderleri (bu ayki)
+                }
+            }
+        };
+
+        let teams = [
+            { id: 'elbistanspor', name: 'Elbistanspor', strength: 70, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'galatasaray', name: 'Galatasaray', strength: 90, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'fenerbahce', name: 'Fenerbahçe', strength: 89, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'besiktas', name: 'Beşiktaş', strength: 85, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'trabzonspor', name: 'Trabzonspor', strength: 83, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'ibfk', name: 'Başakşehir FK', strength: 80, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'adana-demirspor', name: 'Adana Demirspor', strength: 78, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'konyaspor', name: 'Konyaspor', strength: 77, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'sivasspor', name: 'Sivasspor', strength: 76, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'kasimpasa', name: 'Kasımpaşa', strength: 75, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'gaziantepfk', name: 'Gaziantep FK', strength: 74, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'alanyaspor', name: 'Alanyaspor', strength: 73, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'hatayspor', name: 'Hatayspor', strength: 72, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'ankaragucu', name: 'Ankaragücü', strength: 71, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'rize', name: 'Çaykur Rizespor', strength: 70, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'samsunspor', name: 'Samsunspor', strength: 69, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'fatih-karagumruk', name: 'Fatih Karagümrük', strength: 68, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'pendikspor', name: 'Pendikspor', strength: 67, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'istanbulspor', name: 'İstanbulspor', strength: 66, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } },
+            { id: 'eyupspor', name: 'Eyüpspor', strength: 65, leagueStats: { O: 0, G: 0, B: 0, M: 0, AG: 0, YG: 0, Av: 0, Puan: 0 } }
+        ];
+
+        let players = [
+            // Elbistanspor başlangıç kadrosu (11 asil + 7 yedek)
+            { id: 1, name: "Ahmet Can Yılmaz", team: "Elbistanspor", pos: "KL", age: 20, ovr: 65, salary: 15000, value: 500000, isYours: true },
+            { id: 2, name: "Emre Akbaba", team: "Elbistanspor", pos: "STP", age: 21, ovr: 68, salary: 18000, value: 750000, isYours: true },
+            { id: 3, name: "Berkant Demir", team: "Elbistanspor", pos: "STP", age: 23, ovr: 69, salary: 20000, value: 800000, isYours: true },
+            { id: 4, name: "Caner Aydın", team: "Elbistanspor", pos: "SLB", age: 22, ovr: 67, salary: 17000, value: 650000, isYours: true },
+            { id: 5, name: "Serkan Gürbüz", team: "Elbistanspor", pos: "SĞB", age: 20, ovr: 66, salary: 16000, value: 600000, isYours: true },
+            { id: 6, name: "Deniz Kara", team: "Elbistanspor", pos: "DOS", age: 24, ovr: 70, salary: 25000, value: 1000000, isYours: true },
+            { id: 7, name: "Furkan Özcan", team: "Elbistanspor", pos: "MO", age: 21, ovr: 68, salary: 19000, value: 700000, isYours: true },
+            { id: 8, name: "Mert Yılmazer", team: "Elbistanspor", pos: "OOS", age: 20, ovr: 67, salary: 17500, value: 680000, isYours: true },
+            { id: 9, name: "Okan Caner", team: "Elbistanspor", pos: "SLK", age: 25, ovr: 71, salary: 30000, value: 1200000, isYours: true },
+            { id: 10, name: "Umut Şahin", team: "Elbistanspor", pos: "SĞK", age: 22, ovr: 69, salary: 22000, value: 900000, isYours: true },
+            { id: 11, name: "Gürkan Arslan", team: "Elbistanspor", pos: "SNTF", age: 23, ovr: 69, salary: 21000, value: 850000, isYours: true },
+            { id: 12, name: "Caner Gök", team: "Elbistanspor", pos: "KL", age: 19, ovr: 60, salary: 10000, value: 300000, isYours: true },
+            { id: 13, name: "Yiğit Kaya", team: "Elbistanspor", pos: "STP", age: 18, ovr: 62, salary: 12000, value: 400000, isYours: true },
+            { id: 14, name: "Hakan Durmaz", team: "Elbistanspor", pos: "DOS", age: 20, ovr: 64, salary: 14000, value: 550000, isYours: true },
+            { id: 15, name: "Emirhan Yıldız", team: "Elbistanspor", pos: "MO", age: 19, ovr: 63, salary: 13000, value: 480000, isYours: true },
+            { id: 16, name: "Batuhan Koç", team: "Elbistanspor", pos: "SLK", age: 20, ovr: 65, salary: 16000, value: 600000, isYours: true },
+            { id: 17, name: "Cemil Çelik", team: "Elbistanspor", pos: "SĞK", age: 21, ovr: 66, salary: 17000, value: 620000, isYours: true },
+            { id: 18, name: "Demir Karaca", team: "Elbistanspor", pos: "SNTF", age: 18, ovr: 60, salary: 11000, value: 350000, isYours: true },
+
+            // Transfer Pazarındaki Süper Lig Oyuncuları ve Tanınan Diğerleri (Genişletilmiş Örnek)
+            // Kaleciler
+            { id: 101, name: "Fernando Muslera", team: "Galatasaray", pos: "KL", age: 38, ovr: 85, salary: 180000, value: 4000000, isYours: false },
+            { id: 102, name: "Uğurcan Çakır", team: "Trabzonspor", pos: "KL", age: 28, ovr: 83, salary: 120000, value: 15000000, isYours: false },
+            { id: 103, name: "Altay Bayındır", team: "Man Utd", pos: "KL", age: 26, ovr: 81, salary: 100000, value: 10000000, isYours: false },
+            { id: 104, name: "Mert Günok", team: "Beşiktaş", pos: "KL", age: 35, ovr: 80, salary: 90000, value: 3000000, isYours: false },
+            { id: 141, name: "Ersin Destanoğlu", team: "Beşiktaş", pos: "KL", age: 23, ovr: 75, salary: 40000, value: 5000000, isYours: false },
+            { id: 142, name: "Doğan Alemdar", team: "Rennes", pos: "KL", age: 21, ovr: 73, salary: 30000, value: 4000000, isYours: false },
+            { id: 158, name: "Volkan Babacan", team: "Başakşehir FK", pos: "KL", age: 36, ovr: 74, salary: 35000, value: 1500000, isYours: false },
+            { id: 159, name: "Ertuğrul Taşkıran", team: "Konyaspor", pos: "KL", age: 35, ovr: 72, salary: 30000, value: 1000000, isYours: false },
+            { id: 174, name: "Günay Güvenç", team: "Adana Demirspor", pos: "KL", age: 33, ovr: 75, salary: 45000, value: 2000000, isYours: false },
+            { id: 175, name: "Muhammed Şengezer", team: "Başakşehir FK", pos: "KL", age: 27, ovr: 70, salary: 28000, value: 1500000, isYours: false },
+
+            // Stoperler (STP)
+            { id: 105, name: "Victor Nelsson", team: "Galatasaray", pos: "STP", age: 25, ovr: 82, salary: 95000, value: 18000000, isYours: false },
+            { id: 106, name: "Alexander Djiku", team: "Fenerbahçe", pos: "STP", age: 30, ovr: 80, salary: 85000, value: 10000000, isYours: false },
+            { id: 107, name: "Omar Colley", team: "Beşiktaş", pos: "STP", age: 31, ovr: 79, salary: 80000, value: 8000000, isYours: false },
+            { id: 108, name: "Abdülkerim Bardakcı", team: "Galatasaray", pos: "STP", age: 29, ovr: 81, salary: 90000, value: 12000000, isYours: false },
+            { id: 109, name: "Serdar Aziz", team: "Fenerbahçe", pos: "STP", age: 33, ovr: 77, salary: 60000, value: 4000000, isYours: false },
+            { id: 143, name: "Samet Akaydın", team: "Panathinaikos", pos: "STP", age: 30, ovr: 75, salary: 50000, value: 4500000, isYours: false },
+            { id: 144, name: "Davinson Sanchez", team: "Galatasaray", pos: "STP", age: 28, ovr: 83, salary: 100000, value: 20000000, isYours: false },
+            { id: 145, name: "Çağlar Söyüncü", team: "Fenerbahçe", pos: "STP", age: 28, ovr: 82, salary: 95000, value: 18000000, isYours: false },
+            { id: 160, name: "Adama Traoré", team: "Hatayspor", pos: "STP", age: 26, ovr: 73, salary: 30000, value: 2500000, isYours: false },
+            { id: 161, name: "Emrecan Uzunhan", team: "Beşiktaş", pos: "STP", age: 23, ovr: 70, salary: 25000, value: 1800000, isYours: false },
+            { id: 162, name: "Marcão", team: "Sevilla", pos: "STP", age: 28, ovr: 78, salary: 70000, value: 7000000, isYours: false },
+            { id: 163, name: "Steven Caulker", team: "Karagümrük", pos: "STP", age: 32, ovr: 74, salary: 40000, value: 2000000, isYours: false },
+            { id: 176, name: "Ertuğrul Ersoy", team: "Başakşehir FK", pos: "STP", age: 27, ovr: 73, salary: 35000, value: 3000000, isYours: false },
+            { id: 177, name: "Christian Luyindama", team: "Antalyaspor", pos: "STP", age: 30, ovr: 76, salary: 50000, value: 4000000, isYours: false },
+            { id: 189, name: "Leo Dubois", team: "Başakşehir FK", pos: "STP", age: 29, ovr: 78, salary: 60000, value: 8000000, isYours: false },
+            { id: 190, name: "Francisco Calvo", team: "Konyaspor", pos: "STP", age: 32, ovr: 75, salary: 45000, value: 3000000, isYours: false },
+
+            // Sol Bekler (SLB)
+            { id: 110, name: "Ferdi Kadıoğlu", team: "Fenerbahçe", pos: "SLB", age: 24, ovr: 84, salary: 130000, value: 25000000, isYours: false },
+            { id: 111, name: "Arthur Masuaku", team: "Beşiktaş", pos: "SLB", age: 30, ovr: 78, salary: 70000, value: 7000000, isYours: false },
+            { id: 112, name: "Kazımcan Karataş", team: "Galatasaray", pos: "SLB", age: 21, ovr: 72, salary: 35000, value: 3000000, isYours: false },
+            { id: 146, name: "Eren Elmalı", team: "Trabzonspor", pos: "SLB", age: 23, ovr: 74, salary: 45000, value: 4000000, isYours: false },
+            { id: 164, name: "Emre Taşdemir", team: "Ankaragücü", pos: "SLB", age: 28, ovr: 69, salary: 25000, value: 1200000, isYours: false },
+            { id: 178, name: "Güray Vural", team: "Antalyaspor", pos: "SLB", age: 36, ovr: 68, salary: 20000, value: 500000, isYours: false },
+            { id: 191, name: "Umut Meraş", team: "Beşiktaş", pos: "SLB", age: 28, ovr: 72, salary: 35000, value: 2500000, isYours: false },
+            
+            // Sağ Bekler (SĞB)
+            { id: 113, name: "Sacha Boey", team: "Bayern Münih", pos: "SĞB", age: 23, ovr: 83, salary: 110000, value: 28000000, isYours: false },
+            { id: 114, name: "Bright Osayi-Samuel", team: "Fenerbahçe", pos: "SĞB", age: 26, ovr: 79, salary: 75000, value: 9000000, isYours: false },
+            { id: 115, name: "Onur Bulut", team: "Beşiktaş", pos: "SĞB", age: 30, ovr: 76, salary: 55000, value: 5000000, isYours: false },
+            { id: 147, name: "Kaan Ayhan", team: "Galatasaray", pos: "SĞB", age: 29, ovr: 78, salary: 65000, value: 8000000, isYours: false },
+            { id: 165, name: "Barış Başdaş", team: "Eyüpspor", pos: "SĞB", age: 34, ovr: 68, salary: 20000, value: 500000, isYours: false },
+            { id: 179, name: "Nazım Sangaré", team: "Fatih Karagümrük", pos: "SĞB", age: 31, ovr: 70, salary: 28000, value: 1500000, isYours: false },
+            { id: 192, name: "Valentin Rosier", team: "Beşiktaş", pos: "SĞB", age: 28, ovr: 76, salary: 55000, value: 6000000, isYours: false },
+
+            // Defansif Orta Sahalar (DOS)
+            { id: 116, name: "Lucas Torreira", team: "Galatasaray", pos: "DOS", age: 28, ovr: 84, salary: 140000, value: 20000000, isYours: false },
+            { id: 117, name: "Fred", team: "Fenerbahçe", pos: "DOS", age: 31, ovr: 86, salary: 170000, value: 22000000, isYours: false },
+            { id: 118, name: "Amir Hadziahmetovic", team: "Beşiktaş", pos: "DOS", age: 27, ovr: 79, salary: 70000, value: 8000000, isYours: false },
+            { id: 119, name: "Salih Özcan", team: "B. Dortmund", pos: "DOS", age: 26, ovr: 80, salary: 85000, value: 10000000, isYours: false },
+            { id: 148, name: "Mert Hakan Yandaş", team: "Fenerbahçe", pos: "DOS", age: 29, ovr: 77, salary: 60000, value: 5000000, isYours: false },
+            { id: 166, name: "Okay Yokuşlu", team: "West Brom", pos: "DOS", age: 30, ovr: 78, salary: 65000, value: 7000000, isYours: false },
+            { id: 167, name: "Taylan Antalyalı", team: "Ankaragücü", pos: "DOS", age: 29, ovr: 75, salary: 45000, value: 3500000, isYours: false },
+            { id: 180, name: "Mahmut Tekdemir", team: "Başakşehir FK", pos: "DOS", age: 37, ovr: 73, salary: 30000, value: 1000000, isYours: false },
+            { id: 193, name: "İsmail Yüksek", team: "Fenerbahçe", pos: "DOS", age: 25, ovr: 79, salary: 60000, value: 9000000, isYours: false },
+
+            // Merkez Orta Sahalar (MO)
+            { id: 120, name: "Hakan Çalhanoğlu", team: "Inter", pos: "MO", age: 30, ovr: 87, salary: 200000, value: 35000000, isYours: false },
+            { id: 121, name: "Sébastien Szymański", team: "Fenerbahçe", pos: "MO", age: 25, ovr: 83, salary: 110000, value: 18000000, isYours: false },
+            { id: 122, name: "Gedson Fernandes", team: "Beşiktaş", pos: "MO", age: 25, ovr: 81, salary: 90000, value: 15000000, isYours: false },
+            { id: 123, name: "Abdülkadir Ömür", team: "Hull City", pos: "MO", age: 26, ovr: 80, salary: 80000, value: 10000000, isYours: false },
+            { id: 124, name: "İrfan Can Kahveci", team: "Fenerbahçe", pos: "MO", age: 28, ovr: 80, salary: 85000, value: 11000000, isYours: false },
+            { id: 149, name: "Orkun Kökçü", team: "Benfica", pos: "MO", age: 23, ovr: 84, salary: 120000, value: 30000000, isYours: false },
+            { id: 150, name: "Berkan Kutlu", team: "Galatasaray", pos: "MO", age: 26, ovr: 76, salary: 50000, value: 6000000, isYours: false },
+            { id: 168, name: "Emre Kılınç", team: "Ankaragücü", pos: "MO", age: 29, ovr: 73, salary: 35000, value: 2800000, isYours: false },
+            { id: 169, name: "Berkay Özcan", team: "Başakşehir FK", pos: "MO", age: 26, ovr: 75, salary: 40000, value: 3500000, isYours: false },
+            { id: 181, name: "Yusuf Demir", team: "Basel", pos: "MO", age: 21, ovr: 74, salary: 38000, value: 4000000, isYours: false },
+            { id: 182, name: "Efe Akman", team: "Galatasaray", pos: "MO", age: 18, ovr: 65, salary: 10000, value: 750000, isYours: false },
+            { id: 194, name: "Miguel Crespo", team: "Fenerbahçe", pos: "MO", age: 28, ovr: 78, salary: 65000, value: 7500000, isYours: false },
+            { id: 195, name: "Miha Zajc", team: "Fenerbahçe", pos: "MO", age: 30, ovr: 76, salary: 50000, value: 4000000, isYours: false },
+
+            // Ofansif Orta Sahalar (OOS)
+            { id: 125, name: "Dries Mertens", team: "Galatasaray", pos: "OOS", age: 37, ovr: 82, salary: 100000, value: 2500000, isYours: false },
+            { id: 126, name: "Arda Güler", team: "Real Madrid", pos: "OOS", age: 19, ovr: 83, salary: 100000, value: 40000000, isYours: false },
+            { id: 127, name: "Yusuf Yazıcı", team: "Lille", pos: "OOS", age: 27, ovr: 81, salary: 95000, value: 15000000, isYours: false },
+            { id: 128, name: "Alex Oxlade-Chamberlain", team: "Beşiktaş", pos: "OOS", age: 30, ovr: 78, salary: 70000, value: 6000000, isYours: false },
+            { id: 151, name: "Emre Akbaba", team: "Adana Demirspor", pos: "OOS", age: 31, ovr: 76, salary: 55000, value: 4000000, isYours: false },
+            { id: 170, name: "Max Gradel", team: "Sivasspor", pos: "OOS", age: 36, ovr: 74, salary: 40000, value: 1000000, isYours: false },
+            { id: 183, name: "Muhammed Demir", team: "Sivasspor", pos: "OOS", age: 32, ovr: 72, salary: 30000, value: 1800000, isYours: false },
+            { id: 196, name: "Lucas Lima", team: "Santos", pos: "OOS", age: 34, ovr: 75, salary: 40000, value: 2500000, isYours: false }, 
+            
+            // Sol Kanat (SLK)
+            { id: 129, name: "Wilfried Zaha", team: "Galatasaray", pos: "SLK", age: 31, ovr: 83, salary: 150000, value: 18000000, isYours: false },
+            { id: 130, name: "Kerem Aktürkoğlu", team: "Galatasaray", pos: "SLK", age: 25, ovr: 85, salary: 150000, value: 20000000, isYours: false },
+            { id: 131, name: "Tete", team: "Galatasaray", pos: "SLK", age: 24, ovr: 79, salary: 80000, value: 10000000, isYours: false },
+            { id: 132, name: "Ryan Kent", team: "Fenerbahçe", pos: "SLK", age: 27, ovr: 77, salary: 65000, value: 6000000, isYours: false },
+            { id: 152, name: "Barış Alper Yılmaz", team: "Galatasaray", pos: "SLK", age: 24, ovr: 78, salary: 60000, value: 9000000, isYours: false },
+            { id: 171, name: "Fode Koita", team: "Kasımpaşa", pos: "SLK", age: 33, ovr: 70, salary: 30000, value: 1500000, isYours: false },
+            { id: 184, name: "Eren Can Yardımcı", team: "Eyüpspor", pos: "SLK", age: 22, ovr: 71, salary: 25000, value: 2000000, isYours: false },
+            { id: 185, name: "Yasin Öztekin", team: "Boluspor", pos: "SLK", age: 37, ovr: 68, salary: 15000, value: 400000, isYours: false },
+            { id: 197, name: "Sofiane Feghouli", team: "Fatih Karagümrük", pos: "SLK", age: 35, ovr: 75, salary: 40000, value: 1500000, isYours: false },
+            
+            // Sağ Kanat (SĞK)
+            { id: 133, name: "Cengiz Ünder", team: "Fenerbahçe", pos: "SĞK", age: 26, ovr: 82, salary: 100000, value: 16000000, isYours: false },
+            { id: 134, name: "Rachid Ghezzal", team: "Beşiktaş", pos: "SĞK", age: 32, ovr: 79, salary: 70000, value: 5000000, isYours: false },
+            { id: 135, name: "Yunus Akgün", team: "Galatasaray", pos: "SĞK", age: 23, ovr: 77, salary: 50000, value: 7000000, isYours: false },
+            { id: 153, name: "İrfan Can Eğribayat", team: "Fenerbahçe", pos: "SĞK", age: 25, ovr: 75, salary: 50000, value: 6000000, isYours: false },
+            { id: 172, name: "Amine Gouiri", team: "Rennes", pos: "SĞK", age: 24, ovr: 80, salary: 80000, value: 12000000, isYours: false },
+            { id: 186, name: "Davidson", team: "Başakşehir FK", pos: "SĞK", age: 33, ovr: 76, salary: 55000, value: 3500000, isYours: false },
+            { id: 198, name: "Alassane Ndao", team: "Konyaspor", pos: "SĞK", age: 28, ovr: 72, salary: 30000, value: 2500000, isYours: false },
+            
+            // Santrafor (SNTF)
+            { id: 136, name: "Mauro Icardi", team: "Galatasaray", pos: "SNTF", age: 31, ovr: 86, salary: 220000, value: 25000000, isYours: false },
+            { id: 137, name: "Edin Džeko", team: "Fenerbahçe", pos: "SNTF", age: 38, ovr: 84, salary: 190000, value: 3000000, isYours: false },
+            { id: 138, name: "Vincent Aboubakar", team: "Beşiktaş", pos: "SNTF", age: 32, ovr: 80, salary: 90000, value: 7000000, isYours: false },
+            { id: 139, name: "Enner Valencia", team: "Internacional", pos: "SNTF", age: 35, ovr: 79, salary: 80000, value: 4000000, isYours: false },
+            { id: 140, name: "Cenk Tosun", team: "Beşiktaş", pos: "SNTF", age: 33, ovr: 78, salary: 70000, value: 4500000, isYours: false },
+            { id: 154, name: "Umut Nayir", team: "Pendikspor", pos: "SNTF", age: 31, ovr: 72, salary: 30000, value: 2500000, isYours: false },
+            { id: 155, name: "Bertrand Traoré", team: "Aston Villa", pos: "SNTF", age: 28, ovr: 77, salary: 60000, value: 5000000, isYours: false },
+            { id: 156, name: "Mame Thiam", team: "Kayserispor", pos: "SNTF", age: 32, ovr: 75, salary: 45000, value: 3500000, isYours: false },
+            { id: 157, name: "Mbaye Diagne", team: "Al-Qadsiah", pos: "SNTF", age: 32, ovr: 76, salary: 50000, value: 4000000, isYours: false },
+            { id: 173, name: "Halil Dervişoğlu", team: "Hatayspor", pos: "SNTF", age: 24, ovr: 73, salary: 35000, value: 2800000, isYours: false },
+            { id: 187, name: "Mostafa Mohamed", team: "Nantes", pos: "SNTF", age: 27, ovr: 77, salary: 60000, value: 7000000, isYours: false },
+            { id: 188, name: "Ali Sowe", team: "Ankaragücü", pos: "SNTF", age: 30, ovr: 74, salary: 40000, value: 3000000, isYours: false },
+            { id: 199, name: "Adem Büyük", team: "Hatayspor", pos: "SNTF", age: 37, ovr: 70, salary: 25000, value: 800000, isYours: false },
+            { id: 200, name: "Gabonlı Oyuncu", team: "Kasımpaşa", pos: "SNTF", age: 26, ovr: 76, salary: 45000, value: 4000000, isYours: false }
+        ];
+
+        // Dizilişlere göre oyuncu slot konumları (Yüzde cinsinden)
+        // Pozisyonlar artık sabit grid yerine yüzdesel olarak yerleştiriliyor.
+        const formationsData = {
+            "442": [
+                { pos: "KL", row: 90, col: 50 }, 
+                { pos: "SLB", row: 70, col: 10 }, { pos: "STP", row: 75, col: 35 }, { pos: "STP", row: 75, col: 65 }, { pos: "SĞB", row: 70, col: 90 }, 
+                { pos: "SLO", row: 45, col: 15 }, { pos: "MO", row: 40, col: 35 }, { pos: "MO", row: 40, col: 65 }, { pos: "SĞO", row: 45, col: 85 }, 
+                { pos: "SNTF", row: 15, col: 35 }, { pos: "SNTF", row: 15, col: 65 } 
+            ],
+            "433": [
+                { pos: "KL", row: 90, col: 50 },
+                { pos: "SLB", row: 70, col: 10 }, { pos: "STP", row: 75, col: 35 }, { pos: "STP", row: 75, col: 65 }, { pos: "SĞB", row: 70, col: 90 },
+                { pos: "DOS", row: 55, col: 50 }, { pos: "MO", row: 35, col: 25 }, { pos: "MO", row: 35, col: 75 },
+                { pos: "SLK", row: 15, col: 15 }, { pos: "SNTF", row: 10, col: 50 }, { pos: "SĞK", row: 15, col: 85 }
+            ],
+            "352": [
+                { pos: "KL", row: 90, col: 50 },
+                { pos: "STP", row: 75, col: 20 }, { pos: "STP", row: 78, col: 50 }, { pos: "STP", row: 75, col: 80 },
+                { pos: "SLB", row: 55, col: 5 }, { pos: "DOS", row: 50, col: 30 }, { pos: "MO", row: 50, col: 70 }, { pos: "SĞB", row: 55, col: 95 }, { pos: "OOS", row: 30, col: 50 },
+                { pos: "SNTF", row: 10, col: 35 }, { pos: "SNTF", row: 10, col: 65 }
+            ],
+            "4231": [
+                { pos: "KL", row: 90, col: 50 },
+                { pos: "SLB", row: 70, col: 10 }, { pos: "STP", row: 75, col: 35 }, { pos: "STP", row: 75, col: 65 }, { pos: "SĞB", row: 70, col: 90 },
+                { pos: "DOS", row: 60, col: 35 }, { pos: "DOS", row: 60, col: 65 },
+                { pos: "SLK", row: 35, col: 15 }, { pos: "OOS", row: 30, col: 50 }, { pos: "SĞK", row: 35, col: 85 },
+                { pos: "SNTF", row: 10, col: 50 }
+            ],
+            "532": [
+                { pos: "KL", row: 90, col: 50 },
+                { pos: "SLB", row: 70, col: 5 }, { pos: "STP", row: 75, col: 25 }, { pos: "STP", row: 80, col: 50 }, { pos: "STP", row: 75, col: 75 }, { pos: "SĞB", row: 70, col: 95 },
+                { pos: "DOS", row: 45, col: 25 }, { pos: "MO", row: 45, col: 50 }, { pos: "OOS", row: 45, col: 75 },
+                { pos: "SNTF", row: 15, col: 35 }, { pos: "SNTF", row: 15, col: 65 }
+            ]
+        };
+
+        // Lig Takvimi Oluşturma (Basit Round-robin algoritması)
+        let leagueSchedule = [];
+        const TOTAL_TEAMS = teams.length;
+        const TOTAL_WEEKS = (TOTAL_TEAMS - 1) * 2; 
+
+        function generateFullLeagueSchedule() {
+            if (leagueSchedule.length > 0 && leagueSchedule.some(match => match.played)) {
+                 console.log("Fikstür zaten yüklü veya oluşturulmuş.");
+                 return;
+            }
+
+            const allTeamNames = teams.map(t => t.name);
+            const numTeams = allTeamNames.length;
+            
+            if (numTeams % 2 !== 0) {
+                console.error("Fikstür oluşturulamadı: Takım sayısı tek!");
+                return;
+            }
+
+            let matchId = 0;
+            let currentTeams = [...allTeamNames]; 
+
+            for (let week = 0; week < TOTAL_WEEKS; week++) {
+                // Her hafta için maçları al
+                for (let i = 0; i < numTeams / 2; i++) {
+                    let team1 = currentTeams[i];
+                    let team2 = currentTeams[numTeams - 1 - i];
+
+                    // İlk yarıda A vs B
+                    if (week < TOTAL_WEEKS / 2) { 
+                        leagueSchedule.push({ id: matchId++, week: week + 1, home: team1, away: team2, score: null, played: false });
+                    } else { // İkinci yarıda B vs A (deplasman-ev sahibi yer değiştirir)
+                        leagueSchedule.push({ id: matchId++, week: week + 1, home: team2, away: team1, score: null, played: false });
+                    }
+                }
+
+                // Takımları döndür (Round-robin)
+                // İlk takımı sabit tut, geri kalanları döndür
+                const firstStatic = currentTeams[0];
+                const rotatedPart = currentTeams.slice(1);
+                const lastOfRotated = rotatedPart.pop();
+                currentTeams = [firstStatic, lastOfRotated, ...rotatedPart];
+            }
+            console.log("Yeni Fikstür Oluşturuldu:", leagueSchedule.length, "maç.");
+        }
+
+        // --- DOM Elementleri ---
+        // Bu referanslar, DOMContentLoaded içinde taşınacak.
+        let navLinks;
+        let contentAreas;
+        let budgetDisplay;
+        let clubNameDisplay;
+        let seasonDisplay;
+        let teamRosterBody;
+        let transferMarketPlayersBody; 
+        let transferMarketGoalkeepersBody;
+        let transferMarketDefendersBody;
+        let transferMarketMidfieldersBody;
+        let transferMarketForwardsBody;
+        let sellPlayersBody;
+        let matchScheduleList;
+        let currentBudgetFinances;
+        let totalIncome;
+        let totalExpenses;
+        let monthlyNet;
+        let ticketSales;
+        let broadcastRevenue;
+        let sponsorships;
+        let playerSalesRevenue;
+        let playerSalaries;
+        let staffSalaries;
+        let facilityCosts;
+        let playerPurchaseCosts;
+        let leagueTableBody;
+        let simulateMatchButton;
+        let matchLog;
+        let nextMatchTitle;
+        let nextMatchDetails;
+        let formationSelect;
+        let playStyleSelect;
+        let pressIntensitySelect;
+        let saveTacticsButton;
+        let generalMessage;
+        let tacticBoard;
+        let clearSquadButton;
+        let saveGameButton;
+        let loadGameButton;
+        let transferTabButtons;
+        let minOVRFilter;
+        let maxOVRFilter;
+        let minAgeFilter;
+        let maxAgeFilter;
+        let applyFiltersButton;
+
+        let activeTransferTab = 'all'; 
+
+        // --- Fonksiyonlar ---
+
+        // Bütçeyi formatlama
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
+        }
+
+        // Genel mesaj gösterme
+        function showMessage(message, isError = false) {
+            generalMessage.textContent = message;
+            generalMessage.style.display = 'block';
+            generalMessage.style.backgroundColor = isError ? '#f8d7da' : '#d4edda';
+            generalMessage.style.color = isError ? '#721c24' : '#155724';
+            generalMessage.style.borderColor = isError ? '#f5c6cb' : '#c3e6cb';
+            setTimeout(() => {
+                generalMessage.style.display = 'none';
+            }, 5000); 
+        }
+
+        // Genel bilgileri güncelleme
+        function updateHeaderInfo() {
+            clubNameDisplay.innerHTML = `**Kulüp:** ${gameState.clubName}`;
+            seasonDisplay.innerHTML = `**Mevsim:** ${gameState.currentSeason} - Hafta: ${gameState.currentWeek + 1}`;
+            budgetDisplay.innerHTML = `**Bütçe:** ${formatCurrency(gameState.budget)}`;
+        }
+
+        // Takım kadrosunu yükleme
+        function loadTeamRoster() {
+            const myTeamPlayers = players.filter(p => p.isYours);
+            teamRosterBody.innerHTML = '';
+            let totalSalaries = 0;
+            myTeamPlayers.sort((a, b) => {
+                const posOrder = {"KL":1, "STP":2, "SLB":3, "SĞB":4, "DOS":5, "MO":6, "OOS":7, "SLK":8, "SĞK":9, "SNTF":10};
+                if (posOrder[a.pos] !== posOrder[b.pos]) {
+                    return posOrder[a.pos] - posOrder[b.pos];
+                }
+                return b.ovr - a.ovr; 
+            });
+
+            myTeamPlayers.forEach(player => {
+                const row = teamRosterBody.insertRow();
+                row.insertCell().textContent = player.name;
+                row.insertCell().textContent = player.pos;
+                row.insertCell().textContent = Math.round(player.age); 
+                row.insertCell().textContent = Math.round(player.ovr); 
+                row.insertCell().textContent = formatCurrency(player.salary);
+                row.insertCell().textContent = formatCurrency(player.value);
+                totalSalaries += player.salary;
+            });
+            gameState.finances.monthlyExpenses.playerSalaries = totalSalaries;
+        }
+
+        // Transfer pazarını yükleme (filtrelerle birlikte)
+        function loadTransferMarket(tab = activeTransferTab) {
+            activeTransferTab = tab;
+            transferTabButtons.forEach(button => {
+                if (button.dataset.tab === tab) {
+                    button.classList.add('active-tab');
+                } else {
+                    button.classList.remove('active-tab');
+                }
+            });
+            document.querySelectorAll('.transfer-tab-content').forEach(content => {
+                content.style.display = 'none'; 
+            });
+            // Doğru içeriği göster (id'ler artık tab adına göre ayarlandı)
+            document.getElementById(`${tab}TabContent`).style.display = 'block';
+
+
+            transferMarketPlayersBody.innerHTML = '';
+            transferMarketGoalkeepersBody.innerHTML = '';
+            transferMarketDefendersBody.innerHTML = '';
+            transferMarketMidfieldersBody.innerHTML = '';
+            transferMarketForwardsBody.innerHTML = '';
+            sellPlayersBody.innerHTML = ''; 
+
+            const minOVR = parseInt(minOVRFilter.value);
+            const maxOVR = parseInt(maxOVRFilter.value);
+            const minAge = parseInt(minAgeFilter.value);
+            const maxAge = parseInt(maxAgeFilter.value);
+
+            let availablePlayers = players.filter(p => !p.isYours && p.value > 500000); 
+
+            availablePlayers = availablePlayers.filter(p => 
+                p.ovr >= minOVR && p.ovr <= maxOVR &&
+                p.age >= minAge && p.age <= maxAge
+            );
+
+            let filteredByTabPlayers = [];
+            if (tab === 'goalkeepers') filteredByTabPlayers = availablePlayers.filter(p => p.pos === 'KL');
+            else if (tab === 'defenders') filteredByTabPlayers = availablePlayers.filter(p => ['STP', 'SLB', 'SĞB'].includes(p.pos));
+            else if (tab === 'midfielders') filteredByTabPlayers = availablePlayers.filter(p => ['DOS', 'MO', 'OOS'].includes(p.pos));
+            else if (tab === 'forwards') filteredByTabPlayers = availablePlayers.filter(p => ['SLK', 'SĞK', 'SNTF'].includes(p.pos));
+            else filteredByTabPlayers = availablePlayers; 
+
+            filteredByTabPlayers.sort((a, b) => b.value - a.value); 
+
+            let currentTransferBody;
+            if (tab === 'all') currentTransferBody = transferMarketPlayersBody;
+            else if (tab === 'goalkeepers') currentTransferBody = transferMarketGoalkeepersBody;
+            else if (tab === 'defenders') currentTransferBody = transferMarketDefendersBody;
+            else if (tab === 'midfielders') currentTransferBody = transferMarketMidfieldersBody;
+            else if (tab === 'forwards') currentTransferBody = transferMarketForwardsBody;
+            
+            filteredByTabPlayers.forEach(player => {
+                const row = currentTransferBody.insertRow();
+                row.insertCell().textContent = player.name;
+                row.insertCell().textContent = player.pos;
+                row.insertCell().textContent = Math.round(player.age);
+                row.insertCell().textContent = Math.round(player.ovr);
+                row.insertCell().textContent = formatCurrency(player.value);
+                row.insertCell().textContent = formatCurrency(player.salary);
+                const actionCell = row.insertCell();
+                const buyButton = document.createElement('button');
+                buyButton.textContent = 'Teklif Yap';
+                buyButton.classList.add('button');
+                buyButton.onclick = () => proposeTransfer(player);
+                actionCell.appendChild(buyButton);
+            });
+
+            const myTeamPlayers = players.filter(p => p.isYours);
+            myTeamPlayers.forEach(player => {
+                const row = sellPlayersBody.insertRow();
+                row.insertCell().textContent = player.name;
+                row.insertCell().textContent = player.pos;
+                row.insertCell().textContent = Math.round(player.age);
+                row.insertCell().textContent = Math.round(player.ovr);
+                row.insertCell().textContent = formatCurrency(player.value);
+                const actionCell = row.insertCell();
+                const sellButton = document.createElement('button');
+                sellButton.textContent = 'Satışa Koy';
+                sellButton.classList.add('button');
+                sellButton.onclick = () => sellPlayer(player);
+                actionCell.appendChild(sellButton);
+            });
+        }
+
+        function proposeTransfer(player) {
+            const transferFee = player.value;
+            const playerSalary = player.salary;
+
+            if (gameState.budget >= transferFee) {
+                if (confirm(`${player.name} (${formatCurrency(transferFee)} bonservis + ${formatCurrency(playerSalary)} aylık maaş) transfer etmek istiyor musunuz?`)) {
+                    gameState.budget -= transferFee;
+                    gameState.finances.totalExpenses += transferFee; 
+                    
+                    player.isYours = true;
+                    player.team = gameState.clubName;
+                    showMessage(`${player.name} Elbistanspor'a katıldı!`);
+                    updateHeaderInfo();
+                    loadTeamRoster();
+                    loadTransferMarket(activeTransferTab); 
+                    loadFinances();
+                    saveGame(); 
+                }
+            } else {
+                showMessage("Yetersiz bütçe! Bu transferi gerçekleştiremezsin.", true);
+            }
+        }
+
+        function sellPlayer(player) {
+            const sellPrice = Math.floor(player.value * (0.8 + Math.random() * 0.4)); 
+            if (confirm(`${player.name} oyuncusunu ${formatCurrency(sellPrice)} karşılığında satmak istiyor musunuz?`)) {
+                gameState.budget += sellPrice;
+                gameState.finances.totalIncome += sellPrice; 
+                
+                players = players.filter(p => p.id !== player.id); 
+
+                const indexInXI = gameState.tactics.startingXI.indexOf(player.id);
+                if (indexInXI !== -1) {
+                    gameState.tactics.startingXI[indexInXI] = null;
+                    renderTacticBoard(); 
+                }
+
+                showMessage(`${player.name} ${formatCurrency(sellPrice)} karşılığında satıldı.`);
+                updateHeaderInfo();
+                loadTeamRoster();
+                loadTransferMarket(activeTransferTab); 
+                loadFinances();
+                saveGame(); 
+            }
+        }
+
+        function loadMatchSchedule() {
+            matchScheduleList.innerHTML = '';
+            leagueSchedule.forEach(match => {
+                const row = matchScheduleList.insertRow();
+                row.insertCell().textContent = `Hafta ${match.week}`;
+                row.insertCell().textContent = match.home;
+                row.insertCell().textContent = match.away;
+                row.insertCell().textContent = match.score ? match.score : '-';
+                
+                if (match.played) {
+                    row.style.backgroundColor = '#e0e0e0';
+                }
+                if (match.home === gameState.clubName || match.away === gameState.clubName) {
+                    row.style.fontWeight = 'bold';
+                    row.style.backgroundColor = match.played ? '#d4edda' : '#e6f2ff'; 
+                }
+            });
+        }
+
+        function loadFinances() {
+            currentBudgetFinances.textContent = formatCurrency(gameState.budget);
+            totalIncome.textContent = formatCurrency(gameState.finances.totalIncome);
+            totalExpenses.textContent = formatCurrency(gameState.finances.totalExpenses);
+
+            if ((gameState.currentWeek % 4) === 1) { 
+                 gameState.finances.monthlyIncome.ticketSales = 0;
+                 gameState.finances.monthlyIncome.broadcastRevenue = 0;
+                 gameState.finances.monthlyIncome.sponsorships = 0;
+                 gameState.finances.monthlyIncome.playerSales = 0;
+                 gameState.finances.monthlyExpenses.playerPurchases = 0;
+            }
+
+            const currentPlayersSalaries = players.filter(p => p.isYours).reduce((sum, p) => sum + p.salary, 0);
+            gameState.finances.monthlyExpenses.playerSalaries = currentPlayersSalaries; 
+            
+            ticketSales.textContent = formatCurrency(gameState.finances.monthlyIncome.ticketSales);
+            broadcastRevenue.textContent = formatCurrency(gameState.finances.monthlyIncome.broadcastRevenue);
+            sponsorships.textContent = formatCurrency(gameState.finances.monthlyIncome.sponsorships);
+            playerSalesRevenue.textContent = formatCurrency(gameState.finances.monthlyIncome.playerSales);
+
+            playerSalaries.textContent = formatCurrency(gameState.finances.monthlyExpenses.playerSalaries);
+            staffSalaries.textContent = formatCurrency(gameState.finances.monthlyExpenses.staffSalaries);
+            facilityCosts.textContent = formatCurrency(gameState.finances.monthlyExpenses.facilityCosts);
+            playerPurchaseCosts.textContent = formatCurrency(gameState.finances.monthlyExpenses.playerPurchases); 
+
+            const netMonthly = (gameState.finances.monthlyIncome.ticketSales + gameState.finances.monthlyIncome.broadcastRevenue + gameState.finances.monthlyIncome.sponsorships + gameState.finances.monthlyIncome.playerSales) -
+                               (gameState.finances.monthlyExpenses.playerSalaries + gameState.finances.monthlyExpenses.staffSalaries + gameState.finances.monthlyExpenses.facilityCosts + gameState.finances.monthlyExpenses.playerPurchases);
+            monthlyNet.textContent = formatCurrency(netMonthly);
+            monthlyNet.style.color = netMonthly >= 0 ? '#27ae60' : '#c0392b';
+        }
+
+        function loadLeagueTable() {
+            leagueTableBody.innerHTML = '';
+            const sortedTeams = [...teams].sort((a, b) => {
+                if (b.leagueStats.Puan !== a.leagueStats.Puan) {
+                    return b.leagueStats.Puan - a.leagueStats.Puan;
+                }
+                if (b.leagueStats.Av !== a.leagueStats.Av) {
+                    return b.leagueStats.Av - a.leagueStats.Av;
+                }
+                return b.leagueStats.AG - a.leagueStats.AG;
+            });
+
+            sortedTeams.forEach((team, index) => {
+                const row = leagueTableBody.insertRow();
+                row.insertCell().textContent = index + 1; 
+                row.insertCell().textContent = team.name;
+                row.insertCell().textContent = team.leagueStats.O;
+                row.insertCell().textContent = team.leagueStats.G;
+                row.insertCell().textContent = team.leagueStats.B;
+                row.insertCell().textContent = team.leagueStats.M;
+                row.insertCell().textContent = team.leagueStats.AG;
+                row.insertCell().textContent = team.leagueStats.YG;
+                row.insertCell().textContent = team.leagueStats.Av;
+                row.insertCell().textContent = team.leagueStats.Puan;
+                if (team.id === gameState.clubName.toLowerCase().replace(/ /g, '')) { 
+                    row.style.fontWeight = 'bold';
+                    row.style.backgroundColor = '#e6f2ff';
+                }
+            });
+        }
+
+        function updateNextMatchInfo() {
+            const nextMatchWeek = gameState.currentWeek + 1;
+            nextMatchTitle.textContent = `Sonraki Hafta: ${nextMatchWeek}`;
+            nextMatchDetails.textContent = `Hafta ${nextMatchWeek} maçları oynanmayı bekliyor.`;
+
+            if (gameState.currentWeek >= TOTAL_WEEKS) {
+                nextMatchTitle.textContent = "Sezon Tamamlandı!";
+                nextMatchDetails.textContent = "Tüm lig maçları oynandı.";
+                simulateMatchButton.style.display = 'none';
+            } else {
+                simulateMatchButton.style.display = 'block';
+            }
+        }
+
+        function simulateMatch() {
+            const myTeamPlayersCount = players.filter(p => p.isYours).length;
+            if (gameState.tactics.startingXI.filter(id => id !== null).length < 11) {
+                 showMessage("Maç oynamak için ilk 11'i tamamlamalısın!", true);
+                 return;
+            } else if (myTeamPlayersCount < 11) {
+                 showMessage("Maç oynamak için kadronuzda en az 11 oyuncu olmalı!", true);
+                 return;
+            }
+
+            const currentWeekMatches = leagueSchedule.filter(match => match.week === gameState.currentWeek + 1 && !match.played);
+            
+            if (currentWeekMatches.length === 0) {
+                matchLog.innerHTML = "<p>Oynanacak maç kalmadı veya bu hafta tüm maçlar zaten oynanmış.</p>";
+                showMessage("Tüm maçlar oynandı veya sezon tamamlandı!", true);
+                return;
+            }
+
+            matchLog.innerHTML = '';
+            simulateMatchButton.disabled = true; 
+            let matchIndex = 0; 
+
+            const logInterval = setInterval(() => {
+                if (matchIndex < currentWeekMatches.length) {
+                    const match = currentWeekMatches[matchIndex];
+                    const homeTeamObj = teams.find(t => t.name === match.home);
+                    const awayTeamObj = teams.find(t => t.name === match.away);
+
+                    if (!homeTeamObj || !awayTeamObj) {
+                        console.error("Takım bilgileri eksik!", match.home, match.away);
+                        matchIndex++; 
+                        return;
+                    }
+
+                    if (!match.played) {
+                        let homeStrength = homeTeamObj.strength;
+                        let awayStrength = awayTeamObj.strength;
+
+                        if (homeTeamObj.id === 'elbistanspor') {
+                            homeStrength += getTacticalBonus(gameState.tactics);
+                            homeStrength += getStartingXIBonus();
+                            homeStrength += 3; 
+                        } else if (awayTeamObj.id === 'elbistanspor') {
+                            awayStrength += getTacticalBonus(gameState.tactics);
+                            awayStrength += getStartingXIBonus();
+                            homeStrength += 3; 
+                        }
+                        
+                        const homeTeamOVR = calculateTeamOVR(homeTeamObj.name);
+                        const awayTeamOVR = calculateTeamOVR(awayTeamObj.name);
+                        homeStrength += (homeTeamOVR - homeTeamObj.strength) * 0.1; 
+                        awayStrength += (awayTeamOVR - awayTeamObj.strength) * 0.1;
+
+
+                        const calculateGoals = (attStrength, defStrength) => {
+                            let goalChance = attStrength / defStrength;
+                            let goals = 0;
+                            if (goalChance > 1.5) goals = Math.round(Math.random() * 2) + 2; 
+                            else if (goalChance > 1.1) goals = Math.round(Math.random() * 1) + 1; 
+                            else if (goalChance < 0.7) goals = Math.round(Math.random() * 1); 
+                            else goals = Math.round(Math.random() * 1) + 1; 
+
+                            return Math.max(0, goals + Math.floor(Math.random() * 2) - 1); 
+                        };
+
+                        const homeGoals = calculateGoals(homeStrength, awayStrength);
+                        const awayGoals = calculateGoals(awayStrength, homeStrength);
+
+                        match.score = `${homeGoals}-${awayGoals}`;
+                        match.played = true; 
+                        updateLeagueStats(homeTeamObj, awayTeamObj, homeGoals, awayGoals);
+
+                        const p = document.createElement('p');
+                        p.textContent = `Hafta ${match.week}: ${match.home} ${homeGoals} - ${awayGoals} ${match.away}`;
+                        if (homeTeamObj.id === 'elbistanspor' || awayTeamObj.id === 'elbistanspor') {
+                            p.classList.add('my-team-match'); 
+                        }
+                        matchLog.appendChild(p);
+                        matchLog.scrollTop = matchLog.scrollHeight;
+                    }
+                    matchIndex++;
+
+                } else {
+                    clearInterval(logInterval);
+                    processEndOfWeek(); 
+                    showMessage(`Hafta ${gameState.currentWeek} maçları tamamlandı!`);
+                    simulateMatchButton.disabled = false; 
+                }
+            }, 500); 
+        }
+
+        function processEndOfWeek() {
+            gameState.currentWeek++;
+            if ((gameState.currentWeek % 4) === 1) { 
+                 gameState.finances.monthlyIncome.ticketSales = 0;
+                 gameState.finances.monthlyIncome.broadcastRevenue = 0;
+                 gameState.finances.monthlyIncome.sponsorships = 0;
+                 gameState.finances.monthlyIncome.playerSales = 0;
+                 gameState.finances.monthlyExpenses.playerPurchases = 0;
+            }
+
+            gameState.finances.monthlyIncome.ticketSales += 200000 + Math.floor(Math.random() * 100000); 
+            gameState.finances.monthlyIncome.broadcastRevenue += 500000 / 4; 
+            gameState.finances.monthlyIncome.sponsorships += 100000 / 4; 
+
+            players.forEach(player => {
+                player.age += (1 / TOTAL_WEEKS); 
+                if (player.age >= 35) { 
+                    player.ovr = Math.max(40, player.ovr - (Math.random() * 0.8 * (1 / TOTAL_WEEKS))); 
+                    player.value = Math.max(10000, player.value * (1 - (0.05 * (1 / TOTAL_WEEKS)))); 
+                } else if (player.age >= 30) { 
+                    player.ovr = Math.max(50, player.ovr - (Math.random() * 0.4 * (1 / TOTAL_WEEKS))); 
+                    player.value = Math.max(50000, player.value * (1 - (0.02 * (1 / TOTAL_WEEKS)))); 
+                } else if (player.age < 23 && player.ovr < 88) { 
+                    player.ovr = Math.min(99, player.ovr + (Math.random() * 0.6 * (1 / TOTAL_WEEKS))); 
+                    player.value = Math.min(100000000, player.value * (1 + (0.03 * (1 / TOTAL_WEEKS)))); 
+                }
+                player.ovr = parseFloat(player.ovr.toFixed(1)); 
+                player.age = parseFloat(player.age.toFixed(2));
+            });
+
+            if (gameState.currentWeek >= TOTAL_WEEKS) { 
+                showMessage("Sezon sona erdi! Lig Tablosunu kontrol edin. Yeni sezon başlatma özelliği henüz eklenmedi. Oyunu sıfırlamak için yeni oyun başlatmalısınız.", false);
+                simulateMatchButton.style.display = 'none';
+            }
+
+            const currentPlayersSalaries = players.filter(p => p.isYours).reduce((sum, p) => sum + p.salary, 0);
+            gameState.budget -= (currentPlayersSalaries / 4); 
+            gameState.budget -= (gameState.finances.staffSalaries / 4); 
+            gameState.budget -= (gameState.finances.facilityCosts / 4); 
+
+            gameState.budget += (gameState.finances.monthlyIncome.ticketSales + gameState.finances.monthlyIncome.broadcastRevenue + gameState.finances.monthlyIncome.sponsorships + gameState.finances.monthlyIncome.playerSales);
+
+            gameState.finances.totalIncome += (gameState.finances.monthlyIncome.ticketSales + gameState.finances.monthlyIncome.broadcastRevenue + gameState.finances.monthlyIncome.sponsorships + gameState.finances.monthlyIncome.playerSales);
+            gameState.finances.totalExpenses += (currentPlayersSalaries + gameState.finances.staffSalaries + gameState.finances.facilityCosts);
+
+
+            loadFinances();
+            loadTeamRoster(); 
+            loadMatchSchedule();
+            loadLeagueTable();
+            updateNextMatchInfo();
+            updateHeaderInfo();
+            saveGame(); 
+        }
+
+        function getTacticalBonus(tactics) {
+            let bonus = 0;
+            const myTeamOVR = players.filter(p => p.isYours).reduce((sum, p) => sum + p.ovr, 0) / players.filter(p => p.isYours).length;
+
+            if (tactics.playStyle === "attacking" && myTeamOVR > 70) {
+                bonus += 1.5;
+            } else if (tactics.playStyle === "defensive" && myTeamOVR < 70) {
+                bonus += 1.5;
+            } else if (tactics.playStyle === "balanced") {
+                bonus += 0.5;
+            }
+
+            if (tactics.pressIntensity === "high") {
+                bonus += 0.5; 
+            } else if (tactics.pressIntensity === "low") {
+                bonus -= 0.5; 
+            }
+            return bonus;
+        }
+
+        function getStartingXIBonus() {
+            const startingPlayers = gameState.tactics.startingXI
+                .map(playerId => players.find(p => p.id === playerId))
+                .filter(p => p !== undefined && p !== null); 
+
+            if (startingPlayers.length < 11) {
+                return -10; 
+            }
+
+            let totalOVR = 0;
+            let totalCompatibilityScore = 0; 
+
+            startingPlayers.forEach((player, index) => {
+                totalOVR += player.ovr;
+                const assignedPosData = formationsData[gameState.tactics.formation][index];
+                if (assignedPosData) {
+                    totalCompatibilityScore += getPositionCompatibilityScore(player.pos, assignedPosData.pos);
+                }
+            });
+
+            const avgOVR = totalOVR / 11;
+            const avgCompatibility = totalCompatibilityScore / 11;
+
+            return (avgOVR - 65) * 0.1 + (avgCompatibility * 2); 
+        }
+        
+        function getPositionCompatibilityScore(playerPos, assignedPos) {
+            if (playerPos === assignedPos) return 1.0; 
+
+            const posGroups = {
+                'KL': ['KL'],
+                'DEF': ['STP', 'SLB', 'SĞB'],
+                'ORT': ['DOS', 'MO', 'OOS'],
+                'FOR': ['SLK', 'SĞK', 'SNTF']
+            };
+
+            let playerGroup = null;
+            let assignedGroup = null;
+
+            for (const group in posGroups) {
+                if (posGroups[group].includes(playerPos)) playerGroup = group;
+                if (posGroups[group].includes(assignedPos)) assignedGroup = group;
+            }
+
+            if (playerGroup === assignedGroup) return 0.7; 
+
+            if ((playerGroup === 'DEF' && assignedGroup === 'ORT') || (playerGroup === 'ORT' && assignedGroup === 'DEF')) return 0.4;
+            if ((playerGroup === 'ORT' && assignedGroup === 'FOR') || (playerGroup === 'FOR' && assignedGroup === 'ORT')) return 0.4;
+            
+            return 0.2; 
+        }
+
+        function calculateTeamOVR(teamName) {
+            const teamPlayers = players.filter(p => p.team === teamName);
+            if (teamPlayers.length < 11) return 60; 
+
+            const sortedTeamPlayers = [...teamPlayers].sort((a,b) => b.ovr - a.ovr);
+            const top11Players = sortedTeamPlayers.slice(0, 11);
+            
+            let totalOVR = 0;
+            top11Players.forEach(p => totalOVR += p.ovr);
+            return totalOVR / 11;
+        }
+
+        function renderTacticBoard() {
+            tacticBoard.innerHTML = ''; 
+            const currentFormationPositions = formationsData[formationSelect.value];
+            const myTeamPlayers = players.filter(p => p.isYours);
+
+            gameState.tactics.startingXI = gameState.tactics.startingXI.map(playerId => {
+                return myTeamPlayers.some(p => p.id === playerId) ? playerId : null;
+            });
+
+            currentFormationPositions.forEach((posData, index) => {
+                const playerSlot = document.createElement('div');
+                playerSlot.classList.add('player-slot');
+                playerSlot.style.left = `${posData.col}%`; 
+                playerSlot.style.top = `${posData.row}%`;   
+                playerSlot.style.transform = `translate(-50%, -50%)`; 
+
+                const currentPlayerId = gameState.tactics.startingXI[index];
+                const currentPlayer = players.find(p => p.id === currentPlayerId);
+
+                const select = document.createElement('select');
+                select.classList.add('player-select');
+                select.dataset.slotIndex = index; 
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = `- ${posData.pos} -`; 
+                select.appendChild(defaultOption);
+
+                myTeamPlayers.sort((a,b) => {
+                    const posPriority = getPositionPriority(a.pos);
+                    const bPosPriority = getPositionPriority(b.pos);
+                    if (posPriority !== bPosPriority) {
+                        return posPriority - bPosPriority;
+                    }
+                    return b.ovr - a.ovr;
+                });
+
+                myTeamPlayers.forEach(player => {
+                    if (gameState.tactics.startingXI.includes(player.id) && player.id !== currentPlayerId) {
+                        return;
+                    }
+                    const option = document.createElement('option');
+                    option.value = player.id;
+                    option.textContent = `${player.name} (${player.pos} ${Math.round(player.ovr)})`;
+                    if (player.id === currentPlayerId) {
+                        option.selected = true;
+                        playerSlot.classList.add('occupied');
+                    }
+                    select.appendChild(option);
+                });
+
+                select.onchange = (event) => {
+                    const selectedPlayerId = event.target.value === "" ? null : parseInt(event.target.value);
+                    const slotIndex = parseInt(event.target.dataset.slotIndex);
+
+                    if (selectedPlayerId !== null && gameState.tactics.startingXI.includes(selectedPlayerId)) {
+                        const existingIndex = gameState.tactics.startingXI.indexOf(selectedPlayerId);
+                        if (existingIndex !== -1) {
+                            gameState.tactics.startingXI[existingIndex] = null;
+                        }
+                    }
+                    
+                    gameState.tactics.startingXI[slotIndex] = selectedPlayerId;
+                    renderTacticBoard(); 
+                };
+
+                playerSlot.appendChild(select);
+                if (currentPlayer) {
+                    const nameSpan = document.createElement('span');
+                    nameSpan.classList.add('player-name');
+                    nameSpan.textContent = currentPlayer.name;
+                    playerSlot.appendChild(nameSpan);
+
+                    const ovrSpan = document.createElement('span');
+                    ovrSpan.classList.add('player-ovr');
+                    ovrSpan.textContent = `OVR: ${Math.round(currentPlayer.ovr)}`;
+                    playerSlot.appendChild(ovrSpan);
+                }
+
+                tacticBoard.appendChild(playerSlot);
+            });
+            formationSelect.value = gameState.tactics.formation;
+            playStyleSelect.value = gameState.tactics.playStyle;
+            pressIntensitySelect.value = gameState.tactics.pressIntensity;
+        }
+
+
+        // --- Olay Dinleyicileri ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM elementlerini burada güvenli bir şekilde al
+            navLinks = document.querySelectorAll('.nav-link');
+            contentAreas = document.querySelectorAll('.page-content');
+            budgetDisplay = document.getElementById('budgetDisplay');
+            clubNameDisplay = document.getElementById('clubNameDisplay');
+            seasonDisplay = document.getElementById('seasonDisplay');
+            teamRosterBody = document.getElementById('teamRoster');
+            transferMarketPlayersBody = document.getElementById('transferMarketPlayers');
+            transferMarketGoalkeepersBody = document.getElementById('transferMarketGoalkeepers');
+            transferMarketDefendersBody = document.getElementById('transferMarketDefenders');
+            transferMarketMidfieldersBody = document.getElementById('transferMarketMidfielders');
+            transferMarketForwardsBody = document.getElementById('transferMarketForwards');
+            sellPlayersBody = document.getElementById('sellPlayers');
+            matchScheduleList = document.getElementById('matchScheduleList');
+            currentBudgetFinances = document.getElementById('currentBudgetFinances');
+            totalIncome = document.getElementById('totalIncome');
+            totalExpenses = document.getElementById('totalExpenses');
+            monthlyNet = document.getElementById('monthlyNet');
+            ticketSales = document.getElementById('ticketSales');
+            broadcastRevenue = document.getElementById('broadcastRevenue');
+            sponsorships = document.getElementById('sponsorships');
+            playerSalesRevenue = document.getElementById('playerSalesRevenue');
+            playerSalaries = document.getElementById('playerSalaries');
+            staffSalaries = document.getElementById('staffSalaries');
+            facilityCosts = document.getElementById('facilityCosts');
+            playerPurchaseCosts = document.getElementById('playerPurchaseCosts');
+            leagueTableBody = document.getElementById('leagueTableBody');
+            simulateMatchButton = document.getElementById('simulateMatchButton');
+            matchLog = document.getElementById('matchLog');
+            nextMatchTitle = document.getElementById('nextMatchTitle');
+            nextMatchDetails = document.getElementById('nextMatchDetails');
+            formationSelect = document.getElementById('formation');
+            playStyleSelect = document.getElementById('playStyle');
+            pressIntensitySelect = document.getElementById('pressIntensity');
+            saveTacticsButton = document.getElementById('saveTacticsButton');
+            generalMessage = document.getElementById('generalMessage');
+            tacticBoard = document.getElementById('tacticBoard');
+            clearSquadButton = document.getElementById('clearSquadButton');
+            saveGameButton = document.getElementById('saveGameButton');
+            loadGameButton = document.getElementById('loadGameButton');
+            transferTabButtons = document.querySelectorAll('.transfer-tab-button');
+            minOVRFilter = document.getElementById('minOVRFilter');
+            maxOVRFilter = document.getElementById('maxOVRFilter');
+            minAgeFilter = document.getElementById('minAgeFilter');
+            maxAgeFilter = document.getElementById('maxAgeFilter');
+            applyFiltersButton = document.getElementById('applyFiltersButton');
+
+
+            let gameLoaded = loadGame(); 
+
+            if (!gameLoaded) {
+                generateFullLeagueSchedule(); 
+            }
+
+            updateHeaderInfo();
+            loadTeamRoster();
+            loadTransferMarket(); 
+            loadMatchSchedule();
+            loadFinances();
+            loadLeagueTable();
+            updateNextMatchInfo();
+            renderTacticBoard(); 
+            generalMessage.style.display = 'none'; 
+
+            // Sayfa navigasyonu için olay dinleyicisi
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPageId = e.target.dataset.page; 
+
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    contentAreas.forEach(content => content.style.display = 'none');
+                    document.getElementById(targetPageId).style.display = 'block';
+
+                    // Her sayfa yüklendiğinde ilgili verileri güncelle
+                    if (targetPageId === 'team') {
+                        loadTeamRoster();
+                        renderTacticBoard();
+                    }
+                    if (targetPageId === 'transfers') {
+                        loadTransferMarket(activeTransferTab); 
+                    }
+                    if (targetPageId === 'schedule') loadMatchSchedule();
+                    if (targetPageId === 'finances') loadFinances();
+                    if (targetPageId === 'league') loadLeagueTable();
+                    if (targetPageId === 'next-match') updateNextMatchInfo();
+                });
+            });
+
+            // Taktikleri Kaydet butonu
+            saveTacticsButton.addEventListener('click', () => {
+                gameState.tactics.formation = formationSelect.value;
+                gameState.tactics.playStyle = playStyleSelect.value;
+                gameState.tactics.pressIntensity = pressIntensitySelect.value;
+                saveGame(); 
+                showMessage("Taktikler ve İlk 11 başarıyla kaydedildi!");
+            });
+
+            // Sahayı Temizle butonu
+            clearSquadButton.addEventListener('click', () => {
+                gameState.tactics.startingXI.fill(null);
+                renderTacticBoard();
+                showMessage("İlk 11 sahası temizlendi. Oyuncuları yeniden yerleştirebilirsin.");
+            });
+
+            // Diziliş değiştiğinde sahayı yeniden çiz
+            formationSelect.addEventListener('change', renderTacticBoard);
+
+            // Maçı Oyna butonu
+            simulateMatchButton.addEventListener('click', simulateMatch);
+
+            // Kaydet/Yükle butonları
+            saveGameButton.addEventListener('click', saveGame);
+            loadGameButton.addEventListener('click', loadGame);
+
+            // Transfer sekme butonları
+            transferTabButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    loadTransferMarket(e.target.dataset.tab);
+                });
+            });
+
+            // Filtreleri uygula butonu
+            applyFiltersButton.addEventListener('click', () => loadTransferMarket(activeTransferTab));
+
+            // Başlangıçta ana sayfayı göster veya yüklüyse diğer sayfayı
+            document.getElementById('home').style.display = 'block';
+            if (!gameLoaded) { 
+                showMessage("Elbistanspor'a hoş geldin! Bütçeni akıllıca kullan ve Süper Lig'i fethet!", false);
+            }
+        });
+    </script>
 </body>
 </html>
